@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D4DCC74B-FE3A-4CDA-9CED-C8F090ADB5D7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CPortLibDAthens.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DsgnCPortDAthens.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CPortLibDAthens">
+        <MSBuild Projects="CPortLibDAthens.dproj"/>
+    </Target>
+    <Target Name="CPortLibDAthens:Clean">
+        <MSBuild Projects="CPortLibDAthens.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CPortLibDAthens:Make">
+        <MSBuild Projects="CPortLibDAthens.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DsgnCPortDAthens">
+        <MSBuild Projects="DsgnCPortDAthens.dproj"/>
+    </Target>
+    <Target Name="DsgnCPortDAthens:Clean">
+        <MSBuild Projects="DsgnCPortDAthens.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DsgnCPortDAthens:Make">
+        <MSBuild Projects="DsgnCPortDAthens.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CPortLibDAthens;DsgnCPortDAthens"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CPortLibDAthens:Clean;DsgnCPortDAthens:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CPortLibDAthens:Make;DsgnCPortDAthens:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
